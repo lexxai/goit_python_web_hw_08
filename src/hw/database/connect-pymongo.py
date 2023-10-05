@@ -26,7 +26,7 @@ if MongoDB_USER:
 else:
     print("not defined MongoDB_USER. Database not conected")
 
-# print(f"{URI=}")
+print(f"{URI=}")
 
 if __name__ == "__main__":
 
