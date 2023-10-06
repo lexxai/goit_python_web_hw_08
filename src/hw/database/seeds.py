@@ -2,7 +2,7 @@ from pathlib import Path
 import json
 
 import hw.database.connect
-from  hw.database.models import Authors, Tag, Quotes
+from hw.database.models import Authors, Tag, Quotes
 
 
 def load_json_files_from_dir(json_dir: Path) -> dict:
@@ -14,53 +14,56 @@ def load_json_files_from_dir(json_dir: Path) -> dict:
                     result[file_item.stem] = json.load(fp)
     return result
 
-def seeds():
 
-    json_dir = Path(__file__).parent.joinpath('json')
+def seeds(debug: bool = False):
+    json_dir = Path(__file__).parent.joinpath("json")
     json_dict = load_json_files_from_dir(json_dir)
 
     if not json_dict:
         print("Files JSON not found")
         return 1
-    
-    authors_id = {}
-    if "authors" in json_dict:
-        Authors.drop_collection()
-        for author in json_dict.get("authors"):
-            rec=Authors(**author).save()
-            authors_id[author.get("fullname")] = rec.id
-            print("id:", rec.id)
 
-    if "quotes" in json_dict:
+    authors_id = {}
+    seed_object = "authors"
+    if seed_object in json_dict:
+        Authors.drop_collection()
+        for author in json_dict.get(seed_object):
+            rec = Authors(**author).save()
+            authors_id[author.get("fullname")] = rec.id
+            print(f"added {seed_object} id: {rec.id}")
+
+    seed_object = "quotes"
+    if seed_object in json_dict:
         Quotes.drop_collection()
-        for quote in  json_dict.get("quotes"):
+        for quote in json_dict.get(seed_object):
             author = quote.get("author")
             author_id = authors_id.get(author)
             if author_id:
                 quote["author"] = author_id
-                rec=Quotes(**quote).save()
-                print("id:", rec.id)
+                rec = Quotes(**quote).save()
+                print(f"added {seed_object} id: {rec.id}")
 
-    authors = Authors.objects()
-    for record in authors:
-        print("-------------------")
-        print(record.to_mongo().to_dict())
+    if debug:
+        authors = Authors.objects()
+        for record in authors:
+            print("-------------------")
+            print(record.to_mongo().to_dict())
 
-    quotes = Quotes.objects()
-    for record in quotes:
-        print("-------------------")
-        print(record.to_mongo().to_dict())
+        quotes = Quotes.objects()
+        for record in quotes:
+            print("-------------------")
+            print(record.to_mongo().to_dict())
 
-        # tags = [tag.name for tag in note.tags]
-        # print(f"id: {note.id} name: {note.name} date: {note.created} records: {records} tags: {tags}")
+            # tags = [tag.name for tag in note.tags]
+            # print(f"id: {note.id} name: {note.name} date: {note.created} records: {records} tags: {tags}")
 
-    find1 = Authors.objects(fullname="Steve Martin").delete()
-    print("deleted", find1)
+        find1 = Authors.objects(fullname="Steve Martin").delete()
+        print("deleted", find1)
 
-    find1 = Authors.objects()
-    for record in find1:
-        print("-------------------")
-        print(record.to_mongo().to_dict())
+        find1 = Authors.objects()
+        for record in find1:
+            print("-------------------")
+            print(record.to_mongo().to_dict())
 
 
 # # спочатку - створити об'єкт Tag
