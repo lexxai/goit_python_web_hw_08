@@ -59,22 +59,39 @@ quotes = [
   ]
 
 Authors.drop_collection()
+authors_id = {}
 for author in authors:
     rec=Authors(**author).save()
+    authors_id[author.get("fullname")] = rec.id
     print("id:", rec.id)
+
 
 Quotes.drop_collection()
 for quote in quotes:
-    rec=Quotes(**quote).save()
-    print("id:", rec.id)
+    author = quote.get("author")
+    author_id = authors_id[author]
+    if author_id:
+        quote["author"] = author_id
+        rec=Quotes(**quote).save()
+        print("id:", rec.id)
 
 authors = Authors.objects()
 for record in authors:
     print("-------------------")
-    aut = f'fullname: {record.fullname}, description: {record.description}'
-    print(aut)
+    print(record.to_mongo().to_dict())
+
+quotes = Quotes.objects()
+for record in quotes:
+    print("-------------------")
+    print(record.to_mongo().to_dict())
+
     # tags = [tag.name for tag in note.tags]
     # print(f"id: {note.id} name: {note.name} date: {note.created} records: {records} tags: {tags}")
+
+find1 = Authors.objects(fullname="Steve Martin").delete()
+for record in find1:
+    print("-------------------")
+    print(record.to_mongo().to_dict())
 
 
 # # спочатку - створити об'єкт Tag
