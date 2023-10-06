@@ -3,9 +3,9 @@ import pymongo
 
 
 try:
-    from hw.database.init import client
+    from hw08.database.init import client
 except ImportError:
-    from src.hw.database.init import client
+    from src.hw08.database.init import client
 
 if __name__ == "__main__":
     # client = pymongo.MongoClient(URI)
