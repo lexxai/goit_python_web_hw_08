@@ -1,8 +1,8 @@
 
-
+from hw.database.connect import connect_db
 from hw.database.seeds import seeds
 
 
 
-
-seeds()
+if connect_db():
+    seeds()

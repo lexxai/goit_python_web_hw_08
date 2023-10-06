@@ -16,7 +16,6 @@ def load_json_files_from_dir(json_dir: Path) -> dict:
 
 
 def seeds(debug: bool = False):
-    connect_db()
     json_dir = Path(__file__).parent.joinpath("json")
     json_dict = load_json_files_from_dir(json_dir)
 
@@ -80,4 +79,5 @@ def seeds(debug: bool = False):
 
 
 if __name__ == "__main__":
+    connect_db()
     seeds()
