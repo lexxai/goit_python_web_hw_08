@@ -17,7 +17,8 @@ class Tag(EmbeddedDocument):
 
 
 class Quotes(Document):
-    tags = ListField(EmbeddedDocumentField(Tag))
+    # tags = ListField(EmbeddedDocumentField(Tag))
+    tags = ListField(StringField())
     author = StringField()
     quote = StringField()
 
