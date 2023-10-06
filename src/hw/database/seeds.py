@@ -1,8 +1,7 @@
 from pathlib import Path
 import json
 
-from hw.database.connect import connect_db
-from hw.database.models import Authors, Tag, Quotes
+from hw.database.models import Authors, Quotes
 
 
 def load_json_files_from_dir(json_dir: Path) -> dict:
@@ -79,5 +78,7 @@ def seeds(debug: bool = False):
 
 
 if __name__ == "__main__":
-    connect_db()
-    seeds()
+    from hw.database.connect import connect_db
+
+    if connect_db():
+        seeds()

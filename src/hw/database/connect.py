@@ -17,6 +17,7 @@ MongoDB_NAME = os.getenv('MongoDB_NAME')
 #client = None
 connect_state = False
 def connect_db():
+    global connect_state
     if MongoDB_USER:
         URI = f"""mongodb+srv://{MongoDB_USER}:{MongoDB_PASSWORD}@{MongoDB_HOST}/{MongoDB_NAME}?retryWrites=true&w=majority"""
         try:
@@ -29,7 +30,7 @@ def connect_db():
             print("connect_db - ok")
             connect_state = True
     else:
-        print("not defined MongoDB_USER. Database not conected")
+        print("not defined MongoDB_USER from enviroment. Database not conected")
     return connect_state
 
     # print(f"{URI=}")
