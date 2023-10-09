@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  db:
+    build: ./database/
+
+  code :
+    build: ./
+    # stdin_open: true # docker run -i
+    # tty: true        # docker run -t
+    depends_on:
+      - db
+
