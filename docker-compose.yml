@@ -1,12 +1,12 @@
 version: "3.8"
 services:
-  db:
-    build: ./redis/
+  redis:
+    build: ./docker_conf/redis/
 
   code :
     build: ./
     # stdin_open: true # docker run -i
     # tty: true        # docker run -t
     depends_on:
-      - db
+      - redis
 

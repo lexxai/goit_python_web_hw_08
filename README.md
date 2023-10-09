@@ -137,6 +137,23 @@ Not Found
 command 'exit'
 ```
 
+#### MULTIPLE not full TAGS
+```
+>>>tag:li,suc 
+command 'tag' - args: li,suc 
+[ 1 ] ----------------------------------------------------------------------------------------------------
+{'author': 'Albert Einstein',
+ 'quote': '“There are only two ways to live your life. One is as though '
+          'nothing is a miracle. The other is as though everything is a '
+          'miracle.”',
+ 'tags': ['inspirational', 'life', 'live', 'miracle', 'miracles']}
+[ 2 ] ----------------------------------------------------------------------------------------------------
+{'author': 'Albert Einstein',
+ 'quote': '“Try not to become a man of success. Rather become a man of value.”',
+ 'tags': ['adulthood', 'success', 'value']}
+Time execution: -0.03691690001869574
+```
+
 #### REDIS CACHE
 
 ```
