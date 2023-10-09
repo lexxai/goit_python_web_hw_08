@@ -2,6 +2,7 @@ from pathlib import Path
 import json
 
 from hw08.database.models import Authors, Quotes
+from mongoengine import ObjectIdField
 
 
 def load_json_files_from_dir(json_dir: Path) -> dict:
@@ -29,7 +30,7 @@ def seeds(debug: bool = False):
         for author in json_dict.get(seed_object):
             rec = Authors(**author).save()
             authors_id[author.get("fullname")] = rec.id
-            print(f"added {seed_object} id: {rec.id}")
+            print(f"added {seed_object} id: {rec.id} ({rec.fullname})")
 
     seed_object = "quotes"
     if seed_object in json_dict:
@@ -41,6 +42,8 @@ def seeds(debug: bool = False):
                 quote["author"] = author_id
                 rec = Quotes(**quote).save()
                 print(f"added {seed_object} id: {rec.id}")
+                author_by_id = Authors.objects(id=author_id).first()
+                print(f"added quote of quote.author {author}, author id [{author_id}] = ({author_by_id.fullname}) ")
 
     if debug:
         authors = Authors.objects()

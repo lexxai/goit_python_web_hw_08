@@ -13,8 +13,8 @@ GoIT, Python WEB, Homework number 08. NoSQL. MongoDB.
   Створіть хмарну базу даних Atlas MongoDB
   За допомогою ODM Mongoengine створіть моделі для зберігання даних із цих файлів у колекціях authors та quotes.
   Під час зберігання цитат (quotes), поле автора в документі повинно бути не рядковим значенням, а [Reference fields](http://docs.mongoengine.org/guide/defining-documents.html?highlight=ReferenceField#reference -fields) полем, де зберігається ObjectID з колекції authors.
-  Напишіть скрипти для завантаження json файлів у хмарну базу даних.
-  Реалізуйте скрипт для пошуку цитат за тегом, за ім'ям автора або набором тегів. Скрипт виконується в нескінченному циклі і за допомогою звичайного оператора input приймає команди у наступному форматі команда: значення. Приклад:
+  - Напишіть скрипти для завантаження json файлів у хмарну базу даних.
+  - Реалізуйте скрипт для пошуку цитат за тегом, за ім'ям автора або набором тегів. Скрипт виконується в нескінченному циклі і за допомогою звичайного оператора input приймає команди у наступному форматі команда: значення. Приклад:
 
     name: Steve Martin — знайти та повернути список всіх цитат автора Steve Martin;
         tag:life — знайти та повернути список цитат для тега life;
@@ -48,4 +48,22 @@ GoIT, Python WEB, Homework number 08. NoSQL. MongoDB.
 #### Додаткове завдання
 Введіть у моделі додаткове поле телефонний номер. Також додайте поле, що відповідає за кращий спосіб надсилання повідомлень — SMS по телефону або email. Нехай producer.py відправляє у різні черги контакти для SMS та email. Створіть два скрипти consumer_sms.py та consumer_email.py, кожен з яких отримує свої контакти та обробляє їх.
 
+
+### RESULT
+
+#### SEED
+```
+src/main.py"
+connect_db - ok
+added authors id: 6524065693e253cfd6091dd3 (Albert Einstein)
+added authors id: 6524065693e253cfd6091dd4 (Steve Martin)
+added quotes id: 6524065693e253cfd6091dd5
+added quote of quote.author Albert Einstein, author id [6524065693e253cfd6091dd3] = (Albert Einstein)
+added quotes id: 6524065693e253cfd6091dd6
+added quote of quote.author Albert Einstein, author id [6524065693e253cfd6091dd3] = (Albert Einstein)
+added quotes id: 6524065693e253cfd6091dd7
+added quote of quote.author Albert Einstein, author id [6524065693e253cfd6091dd3] = (Albert Einstein)
+added quotes id: 6524065693e253cfd6091dd8
+added quote of quote.author Steve Martin, author id [6524065693e253cfd6091dd4] = (Steve Martin)
+```
 
