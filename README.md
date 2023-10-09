@@ -154,6 +154,23 @@ command 'tag' - args: li,suc
 Time execution: -0.03691690001869574
 ```
 
+
+#### UTF-8
+>>>tag: live,марія                                                                                                          
+command 'tag' - args: live,марія 
+[ 1 ] ----------------------------------------------------------------------------------------------------
+{'author': 'Albert Einstein',
+ 'quote': '“There are only two ways to live your life. One is as though '
+          'nothing is a miracle. The other is as though everything is a '
+          'miracle.”',
+ 'tags': ['inspirational', 'life', 'live', 'miracle', 'miracles']}
+[ 2 ] ----------------------------------------------------------------------------------------------------
+{'author': 'Steve Martin',
+ 'quote': '“A day without sunshine is like, you know, night.”',
+ 'tags': ['humor', 'obvious', 'simile', 'марія']}
+Time execution: 0.019614700024249032
+>>>
+
 #### REDIS CACHE
 
 ```
