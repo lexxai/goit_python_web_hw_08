@@ -151,11 +151,11 @@ command 'tag' - args: li,suc
 {'author': 'Albert Einstein',
  'quote': '“Try not to become a man of success. Rather become a man of value.”',
  'tags': ['adulthood', 'success', 'value']}
-Time execution: -0.03691690001869574
 ```
 
 
 #### UTF-8
+```
 >>>tag: live,марія                                                                                                          
 command 'tag' - args: live,марія 
 [ 1 ] ----------------------------------------------------------------------------------------------------
@@ -168,10 +168,12 @@ command 'tag' - args: live,марія
 {'author': 'Steve Martin',
  'quote': '“A day without sunshine is like, you know, night.”',
  'tags': ['humor', 'obvious', 'simile', 'марія']}
-Time execution: 0.019614700024249032
 >>>
-
+```
 #### REDIS CACHE
+
+##### RUN REDIS DOCKER
+scripts\docker_run_redis.cmd
 
 ```
 command 'name' - args: albert
@@ -213,3 +215,11 @@ Time execution: 0.009065599966561422
 
 ```
 
+
+
+### Частина 2
+
+#### RabbitMQ
+
+##### RUN RabbitMQ DOCKER
+scripts\docker_run_rabbitmq.cmd
