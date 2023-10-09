@@ -137,3 +137,45 @@ Not Found
 command 'exit'
 ```
 
+#### REDIS CACHE
+
+```
+command 'name' - args: albert
+[ 1 ] ----------------------------------------------------------------------------------------------------
+{'author': 'Albert Einstein',
+ 'quote': '“The world as we have created it is a process of our thinking. It '
+          'cannot be changed without changing our thinking.”',
+ 'tags': ['change', 'deep-thoughts', 'thinking', 'world']}
+[ 2 ] ----------------------------------------------------------------------------------------------------
+{'author': 'Albert Einstein',
+ 'quote': '“There are only two ways to live your life. One is as though '
+          'nothing is a miracle. The other is as though everything is a '
+          'miracle.”',
+ 'tags': ['inspirational', 'life', 'live', 'miracle', 'miracles']}
+[ 3 ] ----------------------------------------------------------------------------------------------------
+{'author': 'Albert Einstein',
+ 'quote': '“Try not to become a man of success. Rather become a man of value.”',
+ 'tags': ['adulthood', 'success', 'value']}
+Time execution: 0.02808839999488555
+>>>name: albert
+command 'name' - args: albert
+[ 1 ] ----------------------------------------------------------------------------------------------------
+{'author': 'Albert Einstein',
+ 'quote': '“The world as we have created it is a process of our thinking. It '
+          'cannot be changed without changing our thinking.”',
+ 'tags': ['change', 'deep-thoughts', 'thinking', 'world']}
+[ 2 ] ----------------------------------------------------------------------------------------------------
+{'author': 'Albert Einstein',
+ 'quote': '“There are only two ways to live your life. One is as though '
+          'nothing is a miracle. The other is as though everything is a '
+          'miracle.”',
+ 'tags': ['inspirational', 'life', 'live', 'miracle', 'miracles']}
+[ 3 ] ----------------------------------------------------------------------------------------------------
+{'author': 'Albert Einstein',
+ 'quote': '“Try not to become a man of success. Rather become a man of value.”',
+ 'tags': ['adulthood', 'success', 'value']}
+Time execution: 0.009065599966561422
+>>>
+
+```
+

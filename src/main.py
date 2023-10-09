@@ -1,8 +1,11 @@
 
+from  pprint import pprint
+import timeit
+
 from hw08.database.connect import connect_db
 from hw08.database.seeds import seeds
 from hw08.database.search import find_by_name, find_by_tag
-from  pprint import pprint
+
 
 commands = ("name", "tag", "help", "exit")
 
@@ -48,6 +51,7 @@ if connect_db():
             if  not command_args :
                 print(f"for command '{command}' arguments is empty")
                 continue
+            start_time = timeit.timeit()
             match command:
                 case "name":
                     print(f"command '{command}' - args: {command_args} ")  
@@ -57,7 +61,7 @@ if connect_db():
                     print_result(find_by_tag(command_args))
                 case _:
                     print(f"command '{command}' - unknown, help - list of command")   
-
+            print("Time execution:", timeit.timeit()-start_time)
         except KeyboardInterrupt:
             print("exit")
             break

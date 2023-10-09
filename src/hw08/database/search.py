@@ -1,7 +1,16 @@
+import redis
+from redis_lru import RedisLRU
 
 from hw08.database.models import Authors, Quotes
 
 
+client = redis.StrictRedis(host="localhost", port=6379, password=None)
+cache = RedisLRU(client)
+print("REDIS:", client)
+
+
+
+@cache
 def find_by_name(name:str) -> list:
     result = []
     author = Authors.objects(fullname__iregex=name).first()
@@ -18,7 +27,7 @@ def find_by_name(name:str) -> list:
             result.append(r_dict)
     return result
 
-
+@cache
 def find_by_tag(tag:str) -> list:
     result = []
     if tag:
