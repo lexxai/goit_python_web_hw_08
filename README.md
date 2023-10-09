@@ -67,7 +67,7 @@ added quotes id: 652425416f6a5cc787f5fbe5
 added quote of quote.author Steve Martin, author id [652425416f6a5cc787f5fbe1] = (Steve Martin) 
 ```
 
-### SEARCH
+#### SEARCH
 ```
 /src/main.py"
 connect_db - ok
@@ -133,6 +133,7 @@ Not Found
 >>>name: wwwwww
 command 'name' - args: wwwwww
 Not Found
->>>
+>>>exit
+command 'exit'
 ```
 
