@@ -55,15 +55,84 @@ GoIT, Python WEB, Homework number 08. NoSQL. MongoDB.
 ```
 src/main.py"
 connect_db - ok
-added authors id: 6524065693e253cfd6091dd3 (Albert Einstein)
-added authors id: 6524065693e253cfd6091dd4 (Steve Martin)
-added quotes id: 6524065693e253cfd6091dd5
-added quote of quote.author Albert Einstein, author id [6524065693e253cfd6091dd3] = (Albert Einstein)
-added quotes id: 6524065693e253cfd6091dd6
-added quote of quote.author Albert Einstein, author id [6524065693e253cfd6091dd3] = (Albert Einstein)
-added quotes id: 6524065693e253cfd6091dd7
-added quote of quote.author Albert Einstein, author id [6524065693e253cfd6091dd3] = (Albert Einstein)
-added quotes id: 6524065693e253cfd6091dd8
-added quote of quote.author Steve Martin, author id [6524065693e253cfd6091dd4] = (Steve Martin)
+added authors id: 652425416f6a5cc787f5fbe0 (Albert Einstein)
+added authors id: 652425416f6a5cc787f5fbe1 (Steve Martin)
+added quotes id: 652425416f6a5cc787f5fbe2
+added quote of quote.author Albert Einstein, author id [652425416f6a5cc787f5fbe0] = (Albert Einstein) 
+added quotes id: 652425416f6a5cc787f5fbe3
+added quote of quote.author Albert Einstein, author id [652425416f6a5cc787f5fbe0] = (Albert Einstein) 
+added quotes id: 652425416f6a5cc787f5fbe4
+added quote of quote.author Albert Einstein, author id [652425416f6a5cc787f5fbe0] = (Albert Einstein) 
+added quotes id: 652425416f6a5cc787f5fbe5
+added quote of quote.author Steve Martin, author id [652425416f6a5cc787f5fbe1] = (Steve Martin) 
+```
+
+### SEARCH
+```
+/src/main.py"
+connect_db - ok
+added authors id: 652427d2a11bdaf84635efa9 (Albert Einstein)
+added authors id: 652427d2a11bdaf84635efaa (Steve Martin)
+added quotes id: 652427d2a11bdaf84635efab
+added quote of quote.author Albert Einstein, author id [652427d2a11bdaf84635efa9] = (Albert Einstein) 
+added quotes id: 652427d2a11bdaf84635efac
+added quote of quote.author Albert Einstein, author id [652427d2a11bdaf84635efa9] = (Albert Einstein) 
+added quotes id: 652427d2a11bdaf84635efad
+added quote of quote.author Albert Einstein, author id [652427d2a11bdaf84635efa9] = (Albert Einstein) 
+added quotes id: 652427d3a11bdaf84635efae
+added quote of quote.author Steve Martin, author id [652427d2a11bdaf84635efaa] = (Steve Martin) 
+>>>help
+List of commands: ('name', 'tag', 'help', 'exit'),  please to use ':' as argument separator
+>>>name bert
+command 'name bert' - unknown, can use 'help' for list of commands
+>>>name:bert 
+command 'name' - args: bert
+[ 1 ] ----------------------------------------------------------------------------------------------------
+{'author': 'Albert Einstein',
+ 'quote': '“The world as we have created it is a process of our thinking. It '
+          'cannot be changed without changing our thinking.”',
+ 'tags': ['change', 'deep-thoughts', 'thinking', 'world']}
+[ 2 ] ----------------------------------------------------------------------------------------------------
+{'author': 'Albert Einstein',
+ 'quote': '“There are only two ways to live your life. One is as though '
+          'nothing is a miracle. The other is as though everything is a '
+          'miracle.”',
+ 'tags': ['inspirational', 'life', 'live', 'miracle', 'miracles']}
+[ 3 ] ----------------------------------------------------------------------------------------------------
+{'author': 'Albert Einstein',
+ 'quote': '“Try not to become a man of success. Rather become a man of value.”',
+ 'tags': ['adulthood', 'success', 'value']}
+>>>name: mart
+command 'name' - args: mart 
+[ 1 ] ----------------------------------------------------------------------------------------------------
+{'author': 'Steve Martin',
+ 'quote': '“A day without sunshine is like, you know, night.”',
+ 'tags': ['humor', 'obvious', 'simile']}
+>>>tag: liv
+command 'tag' - args: liv 
+[ 1 ] ----------------------------------------------------------------------------------------------------
+{'author': 'Albert Einstein',
+ 'quote': '“There are only two ways to live your life. One is as though '
+          'nothing is a miracle. The other is as though everything is a '
+          'miracle.”',
+ 'tags': ['inspirational', 'life', 'live', 'miracle', 'miracles']}
+>>>tag: succ
+command 'tag' - args: succ
+[ 1 ] ----------------------------------------------------------------------------------------------------
+{'author': 'Albert Einstein',
+ 'quote': '“Try not to become a man of success. Rather become a man of value.”',
+ 'tags': ['adulthood', 'success', 'value']}
+>>>tag:     
+for command 'tag' arguments is empty
+>>>tag: ""
+command 'tag' - args: ""
+Not Found
+>>>tag: xxxxx
+command 'tag' - args: xxxxx
+Not Found
+>>>name: wwwwww
+command 'name' - args: wwwwww
+Not Found
+>>>
 ```
 

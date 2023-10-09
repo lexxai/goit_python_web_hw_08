@@ -10,13 +10,12 @@ def find_by_name(name:str) -> list:
         author_id = author.id
         records = Quotes.objects(author=author_id)
         for record in records:
-            # print("-------------------")
             r_dict = record.to_mongo().to_dict()
-            r_dict["author"] = author_fullname
+            author_fullname = record.author.fullname
+            if author_fullname:
+                r_dict["author"] = author_fullname
             del(r_dict["_id"])
             result.append(r_dict)
-            # print(r_dict)
-            # result = [record.to_mongo().to_dict() for record in records ]
     return result
 
 
@@ -25,9 +24,12 @@ def find_by_tag(tag:str) -> list:
     if tag:
         records = Quotes.objects(tags__iregex=tag)
         for record in records:
-            #print("-------------------")
-            #print(record.to_mongo().to_dict())
-            result = [record.to_mongo().to_dict() for record in records ]
+            r_dict = record.to_mongo().to_dict()
+            author_fullname = record.author.fullname
+            if author_fullname:
+                r_dict["author"] = author_fullname
+            del(r_dict["_id"])
+            result.append(r_dict)
     return result
 
 if __name__ == "__main__":
