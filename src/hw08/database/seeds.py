@@ -2,7 +2,6 @@ from pathlib import Path
 import json
 
 from hw08.database.models import Authors, Quotes
-from mongoengine import ObjectIdField
 
 
 def load_json_files_from_dir(json_dir: Path) -> dict:
