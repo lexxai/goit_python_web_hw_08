@@ -1,5 +1,24 @@
 import pika
 import sys
+import time
+import json
+
+from hw08.database.connect import connect_db
+from hw08.database.models import Contacts
+
+def email_task(message):
+    # print(f"email_task: {message=}")
+    id = message.get("contact_id")
+    if id:
+        contact = Contacts.objects(id=id).first()
+        if contact:
+            if not contact.done:
+                print(f"Name: {contact.fullname}, email: {contact.email}")
+                contact.update(done=True)
+            else:
+                print("Task already done")
+
+    return
 
 
 def main():
@@ -7,16 +26,26 @@ def main():
     connection = pika.BlockingConnection(
         pika.ConnectionParameters(host='localhost', port=5672, credentials=credentials))
     channel = connection.channel()
+    channel.queue_declare(queue='task_queue', durable=True)
 
-    channel.queue_declare(queue='hello_world')
 
     def callback(ch, method, properties, body):
-        print(f" [x] Received {body}")
+        message = json.loads(body.decode())
+        print(f" [x] Received id: {message.get('id')}")
+        email_task(message)
+        time.sleep(1)
+        ch.basic_ack(delivery_tag=method.delivery_tag)
 
-    channel.basic_consume(queue='hello_world', on_message_callback=callback, auto_ack=True)
 
-    print(' [*] Waiting for messages. To exit press CTRL+C')
-    channel.start_consuming()
+    if connect_db():
+
+        channel.basic_qos(prefetch_count=1)
+        channel.basic_consume(queue='task_queue', on_message_callback=callback)
+
+        print(' [*] Waiting for messages. To exit press CTRL+C')
+        channel.start_consuming()
+    else:
+        print("Database not connected")
 
 
 if __name__ == '__main__':

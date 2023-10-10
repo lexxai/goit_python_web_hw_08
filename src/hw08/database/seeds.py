@@ -74,7 +74,7 @@ def seeds(debug: bool = False):
 
 
 
-def seed_contacts(max_records:int = 100):
+def seed_contacts(max_records:int = 100) -> list[str]:
 
 # class Contacts(Document):
     # fullname = StringField()
@@ -87,6 +87,7 @@ def seed_contacts(max_records:int = 100):
     fake = Faker('uk-UA')
     print(f"Add contacts: {max_records} ...")
     Contacts.drop_collection()
+    result = []
     for i in tqdm(range(max_records)):
         obj = {
         "fullname": " ".join([fake.first_name(),fake.last_name()]),
@@ -95,7 +96,10 @@ def seed_contacts(max_records:int = 100):
         "address": fake.address(),
         "birthday": fake.date_between()
         }
-        Contacts(**obj).save()
+        contact = Contacts(**obj).save()
+        obj_id = contact.id
+        result.append(str(obj_id))
+    return result
 
 
 
@@ -115,5 +119,5 @@ if __name__ == "__main__":
     from hw08.database.connect import connect_db
 
     if connect_db():
-        seeds()
-        seed_contacts()
+        # seeds()
+        print(seed_contacts(10))

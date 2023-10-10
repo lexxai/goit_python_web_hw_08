@@ -17,13 +17,13 @@ def print_result(records: list):
             pprint(record)
     else:
         print("Not Found")
-        
+
 
 def main(seed_on: bool = True):
     if connect_db():
         if seed_on:
             seeds()
-            seed_contacts()
+            # seed_contacts()
 
         ##console search
 
