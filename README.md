@@ -71,16 +71,12 @@ added quote of quote.author Steve Martin, author id [652425416f6a5cc787f5fbe1] =
 ```
 /src/main.py"
 connect_db - ok
-added authors id: 652427d2a11bdaf84635efa9 (Albert Einstein)
-added authors id: 652427d2a11bdaf84635efaa (Steve Martin)
-added quotes id: 652427d2a11bdaf84635efab
-added quote of quote.author Albert Einstein, author id [652427d2a11bdaf84635efa9] = (Albert Einstein) 
-added quotes id: 652427d2a11bdaf84635efac
-added quote of quote.author Albert Einstein, author id [652427d2a11bdaf84635efa9] = (Albert Einstein) 
-added quotes id: 652427d2a11bdaf84635efad
-added quote of quote.author Albert Einstein, author id [652427d2a11bdaf84635efa9] = (Albert Einstein) 
-added quotes id: 652427d3a11bdaf84635efae
-added quote of quote.author Steve Martin, author id [652427d2a11bdaf84635efaa] = (Steve Martin) 
+Add authors...
+100%|████████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:00<00:00,  8.47it/s]
+Add quotes...
+100%|████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:00<00:00, 10.96it/s]
+Add contacts: 100 ...
+100%|████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:03<00:00, 25.61it/s]
 >>>help
 List of commands: ('name', 'tag', 'help', 'exit'),  please to use ':' as argument separator
 >>>name bert

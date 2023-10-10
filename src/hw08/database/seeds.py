@@ -1,6 +1,7 @@
 from pathlib import Path
 import json
 from faker import Faker
+from tqdm import tqdm
 
 from hw08.database.models import Authors, Quotes, Contacts
 
@@ -25,25 +26,29 @@ def seeds(debug: bool = False):
 
     authors_id = {}
     seed_object = "authors"
+    print(f"Add {seed_object}...") 
     if seed_object in json_dict:
         Authors.drop_collection()
-        for author in json_dict.get(seed_object):
+        so=json_dict.get(seed_object)
+        for author in tqdm(so, total=len(so)):
             rec = Authors(**author).save()
             authors_id[author.get("fullname")] = rec.id
-            print(f"added {seed_object} id: {rec.id} ({rec.fullname})")
+            # print(f"added {seed_object} id: {rec.id} ({rec.fullname})")
 
     seed_object = "quotes"
+    print(f"Add {seed_object}...") 
     if seed_object in json_dict:
         Quotes.drop_collection()
-        for quote in json_dict.get(seed_object):
+        so=json_dict.get(seed_object)
+        for quote in  tqdm(so, total=len(so)):
             author = quote.get("author")
             author_id = authors_id.get(author)
             if author_id:
                 quote["author"] = author_id
                 rec = Quotes(**quote).save()
-                print(f"added {seed_object} id: {rec.id}")
+                #print(f"added {seed_object} id: {rec.id}")
                 author_by_id = Authors.objects(id=author_id).first()
-                print(f"added quote of quote.author {author}, author id [{author_id}] = ({author_by_id.fullname}) ")
+                #print(f"added quote of quote.author {author}, author id [{author_id}] = ({author_by_id.fullname}) ")
 
     if debug:
         authors = Authors.objects()
@@ -80,9 +85,9 @@ def seed_contacts(max_records:int = 100):
     # done = BooleanField(default=False)
 
     fake = Faker('uk-UA')
-
+    print(f"Add contacts: {max_records} ...")
     Contacts.drop_collection()
-    for i in range(max_records):
+    for i in tqdm(range(max_records)):
         obj = {
         "fullname": " ".join([fake.first_name(),fake.last_name()]),
         "email": fake.email(),
@@ -110,5 +115,5 @@ if __name__ == "__main__":
     from hw08.database.connect import connect_db
 
     if connect_db():
-        # seeds()
+        seeds()
         seed_contacts()
