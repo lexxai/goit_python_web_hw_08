@@ -446,3 +446,6 @@ prefer_type='type_email'
 Task already done
 
 ```
+
+#### RabbitMQ Monitor SMS/EMAIL
+![RabbitMQ Monitor sms/email](doc/rabitmq_03.png) 
