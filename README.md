@@ -336,4 +336,5 @@ Task already done
 
 
 #### MongoDB records 
+done = true
 ![MongoDB records](doc/mongo_01.png) 
