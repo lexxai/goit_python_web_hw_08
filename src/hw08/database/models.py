@@ -37,4 +37,5 @@ class Contacts(Document):
     address = StringField()
     birthday = DateField()
     done = BooleanField(default=False)
+    when_done = DateTimeField(null=True)
 

@@ -219,3 +219,119 @@ Time execution: 0.009065599966561422
 
 ##### RUN RabbitMQ DOCKER
 scripts\docker_run_rabbitmq.cmd
+
+##### RUN task creater - producer
+```
+python tasks/producer.py
+connect_db - ok
+Add contacts: 100 ...
+100%|████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:04<00:00, 22.64it/s]
+Sending '100' contacts ...
+100%|██████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 2941.10it/s] 
+Sending '100' contacts ...
+100%|██████████████████████████████████████████████████████████████████████████████████| 100/100 [00:00<00:00, 4831.20it/s]
+```
+
+##### RUN email sender - consumer #1
+
+```
+tasks/consumer.py
+
+connect_db - ok
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received id: 1
+Name: Валерій Іваничук 
+Sending email to: smyklarysa@example.com
+ [x] Received id: 3
+Name: Лілія Швачко 
+Sending email to: varvara41@example.org
+ [x] Received id: 5
+Name: Тарас Царенко 
+Sending email to: iukhym96@example.org
+ [x] Received id: 7
+Name: Веніямин Козак 
+Sending email to: vadym17@example.com
+ [x] Received id: 9
+Name: Левко Копитко 
+Sending email to: klavdiia81@example.net
+....
+ [x] Received id: 1
+Task already done
+ [x] Received id: 2
+Task already done
+ [x] Received id: 3
+Task already done
+ [x] Received id: 4
+Task already done
+ [x] Received id: 5
+
+
+```
+
+##### RUN email sender - consumer #2
+
+```
+tasks/consumer.py
+
+[x] Received id: 2
+Name: Ярина Наливайко 
+Sending email to: zhuravelzynovii@example.com
+ [x] Received id: 4
+Name: Мілена Воблий 
+Sending email to: zarudnyilukian@example.net
+ [x] Received id: 6
+Name: Аліна Шовкопляс 
+Sending email to: vlokhklyment@example.org
+ [x] Received id: 8
+Name: Єлисавета Андрієвич 
+Sending email to: liubovverhun@example.net
+ [x] Received id: 10
+Name: Омелян Бабариченко 
+Sending email to: kostiantyn04@example.org
+ [x] Received id: 12
+Name: Трохим Юхименко 
+Sending email to: romanetsoleksa@example.org
+ [x] Received id: 14
+Name: Едуард Пʼятаченко 
+Sending email to: avreliibarannyk@example.org
+ [x] Received id: 16
+Name: Юстим Твердохліб 
+Sending email to: ustym82@example.com
+ [x] Received id: 18
+Name: Єлисавета Харченко 
+Sending email to: shvaikaoleksandr@example.net
+....
+ [x] Received id: 7
+Task already done
+ [x] Received id: 9
+Task already done
+ [x] Received id: 11
+Task already done
+ [x] Received id: 13
+Task already done
+ [x] Received id: 15
+Task already done
+ [x] Received id: 17
+Task already done
+ [x] Received id: 19
+Task already done
+ [x] Received id: 21
+Task already done
+ [x] Received id: 23
+Task already done
+ [x] Received id: 25
+Task already done
+ [x] Received id: 27
+Task already done
+ [x] Received id: 29
+Task already done
+ [x] Received id: 31
+Task already done
+```
+
+#### RabbitMQ Monitor 
+![RabbitMQ Monitor](doc\rabitmq_02.png) 
+
+
+#### MongoDB records 
+![MongoDB records](doc\mongo_01.png) 

@@ -1,3 +1,4 @@
+from datetime import datetime
 import pika
 import sys
 import time
@@ -13,8 +14,10 @@ def email_task(message):
         contact = Contacts.objects(id=id).first()
         if contact:
             if not contact.done:
-                print(f"Name: {contact.fullname}, email: {contact.email}")
-                contact.update(done=True)
+                print(f"Name: {contact.fullname} ")
+                print(f"Sending email to: {contact.email}")
+                time.sleep(1)
+                contact.update(done=True, when_done=datetime.now())
             else:
                 print("Task already done")
 
@@ -33,7 +36,7 @@ def main():
         message = json.loads(body.decode())
         print(f" [x] Received id: {message.get('id')}")
         email_task(message)
-        time.sleep(1)
+
         ch.basic_ack(delivery_tag=method.delivery_tag)
 
 

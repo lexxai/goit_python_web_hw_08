@@ -57,4 +57,4 @@ def main(seed_on: bool = True, max_records: int = 100):
 
 
 if __name__ == "__main__":
-    main()
+    main(max_records=100)
