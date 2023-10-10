@@ -1,12 +1,18 @@
 version: "3.8"
+name: hw08
 services:
   redis:
-    build: ./docker_conf/redis/
+    image: redis
+    ports:
+      - "6379:6379"
 
   code :
+    tty: true
+    stdin_open: true
     build: ./
-    # stdin_open: true # docker run -i
-    # tty: true        # docker run -t
+    env_file:
+      - ./.env
+
     depends_on:
       - redis
 

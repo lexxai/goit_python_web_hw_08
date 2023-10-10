@@ -1,3 +1,4 @@
+import os
 import redis
 from redis_lru import RedisLRU
 import re
@@ -5,7 +6,10 @@ import re
 from hw08.database.models import Authors, Quotes
 
 
-client = redis.StrictRedis(host="localhost", port=6379, password=None)
+REDIS_HOST = os.getenv('REDIS_HOST', "localhost")
+REDIS_PORT = int(os.getenv('REDIS_PORT', 6379))
+
+client = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT, password=None)
 cache = RedisLRU(client)
 print("REDIS:", client)
 

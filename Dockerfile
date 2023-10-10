@@ -12,9 +12,8 @@ WORKDIR $APP_HOME
 
 # Скопіюємо інші файли в робочу директорію контейнера
 COPY . .
-COPY .config/config_docker.ini .config/config.ini
+# COPY .env .env
 COPY run.sh run.sh 
-COPY migrations/ migrations/
 COPY src/ src/
 COPY requirements.txt requirements.txt
 

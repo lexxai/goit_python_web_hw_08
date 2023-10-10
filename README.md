@@ -449,3 +449,8 @@ Task already done
 
 #### RabbitMQ Monitor SMS/EMAIL
 ![RabbitMQ Monitor sms/email](doc/rabitmq_03.png) 
+
+
+#### DOCKER COMPOSE
+![ DOCKER COMPOSE 1](doc/docker_01.png) 
+![ DOCKER COMPOSE 2](doc/docker_02.png) 

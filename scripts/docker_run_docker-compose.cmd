@@ -1,6 +1,10 @@
 @echo off
 PUSHD ..
 
-docker-compose up code
+docker-compose up -d code 
+timeout 1
+docker attach hw08-code-1
+
+docker-compose down 
 
 POPD

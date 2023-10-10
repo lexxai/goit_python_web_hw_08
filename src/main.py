@@ -2,6 +2,8 @@
 from  pprint import pprint
 import timeit
 
+from  redis import RedisError
+
 from hw08.database.connect import connect_db
 from hw08.database.seeds import seeds,seed_contacts
 from hw08.database.search import find_by_name, find_by_tag
@@ -72,4 +74,7 @@ def main(seed_on: bool = True):
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except RedisError as e:
+        print("ERROR Redis connction", e)

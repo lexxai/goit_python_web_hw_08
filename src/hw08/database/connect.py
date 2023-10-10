@@ -4,10 +4,12 @@ from pathlib import Path
 from dotenv import load_dotenv
 from mongoengine import connect, OperationError
 
-env_path = Path(__file__).parent.parent.parent.parent.joinpath(".env")
-if env_path.is_file:
-    # print(env_path)
-    load_dotenv(env_path)
+MongoDB_USER = os.getenv('MongoDB_USER')
+if not MongoDB_USER:
+    env_path = Path(__file__).parent.parent.parent.parent.joinpath(".env")
+    if env_path.is_file:
+        # print(env_path)
+        load_dotenv(env_path)
 
 MongoDB_USER = os.getenv('MongoDB_USER')
 MongoDB_PASSWORD = os.getenv('MongoDB_PASSWORD')
