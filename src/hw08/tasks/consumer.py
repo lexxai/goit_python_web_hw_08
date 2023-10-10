@@ -14,15 +14,16 @@ def sending_task(message):
     # prefer_type = message.get("prefer")
     if id:
         contact = Contacts.objects(id=id).first()
+    if  contact:  
         prefer_type = contact.prefer.type
-    match prefer_type:
-        case "SMS":
-            sms_task(contact)
-        case "EMAIL":
-            email_task(contact)
-        case _:
-            print("Prefer type is unknown, use email by default")
-            email_task(contact)
+        match prefer_type:
+            case "SMS":
+                sms_task(contact)
+            case "EMAIL":
+                email_task(contact)
+            case _:
+                print("Prefer type is unknown, use email by default")
+                email_task(contact)
 
     # print(f"sending_task {prefer_type=}")
 

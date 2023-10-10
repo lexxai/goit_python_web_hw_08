@@ -343,5 +343,106 @@ done = true
 
 ### Додаткове
 src\hw08\tasks\producer_sms.py
-src\hw08\tasks\producer_email.py
+```
+connect_db - ok
+Add contacts: 5 ...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00, 17.79it/s]
+Sending '5' contacts ...
+100%|████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00, 324.81it/s] 
+Sending '5' contacts ...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:00<?, ?it/s] 
+```
+src\hw08\tasks\consumer_sms.py
+```
+connect_db - ok
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received id: 1
+prefer_type='type_sms'
+Name: Устим Чекалюк 
+Sending SMS to: 056 57 66
+ [x] Received id: 2
+prefer_type='type_sms'
+Name: Соломон Мірошниченко 
+Sending SMS to: +380 88 125 16 47
+ [x] Received id: 3
+prefer_type='type_sms'
+Name: Станіслав Гоголь-Яновський 
+Sending SMS to: 718-59-05
+ [x] Received id: 4
+prefer_type='type_sms'
+Name: Тереза Дзюба 
+Sending SMS to: +380 06 669 06 94
+ [x] Received id: 5
+prefer_type='type_sms'
+Name: Христина Забарний 
+Sending SMS to: 053 619 81 88
+ [x] Received id: 1
+prefer_type='type_sms'
+Task already done
+ [x] Received id: 2
+prefer_type='type_sms'
+Task already done
+ [x] Received id: 3
+prefer_type='type_sms'
+Task already done
+ [x] Received id: 4
+prefer_type='type_sms'
+Task already done
+ [x] Received id: 5
+prefer_type='type_sms'
+Task already done
 
+```
+
+src\hw08\tasks\producer_email.py
+```
+connect_db - ok
+Add contacts: 5 ...
+100%|█████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00, 17.43it/s]
+Sending '5' contacts ...
+100%|████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00, 392.13it/s] 
+Sending '5' contacts ...
+100%|███████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00, 2507.06it/s]
+```
+
+src\hw08\tasks\consumer_email.py
+```
+connect_db - ok
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received id: 1
+prefer_type='type_email'
+Name: Тарас Шовкопляс 
+Sending email to: olesmalyshko@example.org
+ [x] Received id: 2
+prefer_type='type_email'
+Name: Юстим Андрієнко 
+Sending email to: iaroslav38@example.org
+ [x] Received id: 3
+prefer_type='type_email'
+Name: Віктор Ярема 
+Sending email to: levko82@example.org
+ [x] Received id: 4
+prefer_type='type_email'
+Name: Олекса Фартушняк 
+Sending email to: irenakhrystenko@example.org
+ [x] Received id: 5
+prefer_type='type_email'
+Name: Аркадій Каденюк 
+Sending email to: khomashutko@example.com
+ [x] Received id: 1
+prefer_type='type_email'
+Task already done
+ [x] Received id: 2
+prefer_type='type_email'
+Task already done
+ [x] Received id: 3
+prefer_type='type_email'
+Task already done
+ [x] Received id: 4
+prefer_type='type_email'
+Task already done
+ [x] Received id: 5
+prefer_type='type_email'
+Task already done
+
+```
