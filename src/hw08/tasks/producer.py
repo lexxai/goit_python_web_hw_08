@@ -7,9 +7,12 @@ def main():
     channel = connection.channel()
     
     channel.queue_declare(queue='hello_world')
-    
-    channel.basic_publish(exchange='', routing_key='hello_world', body='Hello world!'.encode())
-    print(" [x] Sent 'Hello World!'")
+    text = "Hello world! 1"
+    channel.basic_publish(exchange='', routing_key='hello_world', body=text.encode())
+    print(f" [x] {text}")
+    text = "Hello world! 2"
+    channel.basic_publish(exchange='', routing_key='hello_world', body=text.encode())
+    print(f" [x] {text}")
     connection.close()
     
 

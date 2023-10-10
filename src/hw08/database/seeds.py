@@ -1,7 +1,8 @@
 from pathlib import Path
 import json
+from faker import Faker
 
-from hw08.database.models import Authors, Quotes
+from hw08.database.models import Authors, Quotes, Contacts
 
 
 def load_json_files_from_dir(json_dir: Path) -> dict:
@@ -67,6 +68,32 @@ def seeds(debug: bool = False):
             print(record.to_mongo().to_dict())
 
 
+
+def seed_contacts(max_records:int = 100):
+
+# class Contacts(Document):
+    # fullname = StringField()
+    # email = StringField()
+    # phone =  StringField()
+    # address = StringField()
+    # birthday = DateField()
+    # done = BooleanField(default=False)
+
+    fake = Faker('uk-UA')
+
+    Contacts.drop_collection()
+    for i in range(max_records):
+        obj = {
+        "fullname": " ".join([fake.first_name(),fake.last_name()]),
+        "email": fake.email(),
+        "phone":  fake.phone_number(),
+        "address": fake.address(),
+        "birthday": fake.date_between()
+        }
+        Contacts(**obj).save()
+
+
+
 # # спочатку - створити об'єкт Tag
 # tag = Tag(name='Purchases')
 # # потім - створення об'єктів Record
@@ -83,4 +110,5 @@ if __name__ == "__main__":
     from hw08.database.connect import connect_db
 
     if connect_db():
-        seeds()
+        # seeds()
+        seed_contacts()

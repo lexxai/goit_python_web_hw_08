@@ -8,7 +8,8 @@ from mongoengine.fields import (
     ListField,
     StringField,
     ObjectIdField,
-    ReferenceField
+    ReferenceField,
+    DateField
 )
 
 
@@ -27,4 +28,13 @@ class Quotes(Document):
     tags = ListField(StringField())
     author = ReferenceField("Authors", reverse_delete_rule=CASCADE)
     quote = StringField()
+
+
+class Contacts(Document):
+    fullname = StringField()
+    email = StringField()
+    phone =  StringField()
+    address = StringField()
+    birthday = DateField()
+    done = BooleanField(default=False)
 
