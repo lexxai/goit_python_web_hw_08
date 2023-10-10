@@ -273,7 +273,9 @@ Task already done
 ```
 tasks/consumer.py
 
-[x] Received id: 2
+connect_db - ok
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received id: 2
 Name: Ярина Наливайко 
 Sending email to: zhuravelzynovii@example.com
  [x] Received id: 4
@@ -330,8 +332,8 @@ Task already done
 ```
 
 #### RabbitMQ Monitor 
-![RabbitMQ Monitor](doc\rabitmq_02.png) 
+![RabbitMQ Monitor](doc/rabitmq_02.png) 
 
 
 #### MongoDB records 
-![MongoDB records](doc\mongo_01.png) 
+![MongoDB records](doc/mongo_01.png) 
