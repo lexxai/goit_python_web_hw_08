@@ -16,7 +16,7 @@ def seed(
     result = []
     if connect_db():
         if seed_on:
-            result = seed_contacts(max_records=max_records, preffer_type=preffer_type)
+            result = seed_contacts(max_records=max_records, preffer_type=preffer_type, drop=drop)
     return result
 
 
