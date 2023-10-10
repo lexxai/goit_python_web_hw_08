@@ -2,6 +2,7 @@ from datetime import datetime
 
 from mongoengine import EmbeddedDocument, Document, CASCADE, DENY
 from mongoengine.fields import (
+    IntField,
     BooleanField,
     DateTimeField,
     EmbeddedDocumentField,
@@ -29,11 +30,14 @@ class Quotes(Document):
     author = ReferenceField("Authors", reverse_delete_rule=CASCADE)
     quote = StringField()
 
+class PreferTypes(EmbeddedDocument):
+    type = StringField()
 
 class Contacts(Document):
     fullname = StringField()
     email = StringField()
     phone =  StringField()
+    prefer = EmbeddedDocumentField(PreferTypes)
     address = StringField()
     birthday = DateField()
     done = BooleanField(default=False)
